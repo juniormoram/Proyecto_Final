@@ -21,14 +21,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         users = ArrayList()
         btn_Login.setOnClickListener {
-            buscarusuario()
+            BuscarUsuario()
         }
         lbl_NuevoUsuario.setOnClickListener{
         startActivity(Intent(this,RegistroActivity::class.java))
     }
     }
 
-    fun buscarusuario() {
+    fun BuscarUsuario() {
         var index1 = 0
         val listaser2 = CapaDatos.SharedApp.prefs2.name2
         if(listaser2 != "") {

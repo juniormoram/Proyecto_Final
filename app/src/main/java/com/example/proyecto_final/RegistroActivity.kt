@@ -43,7 +43,6 @@ class RegistroActivity : AppCompatActivity() {
 
     private val PERMISSION_CODE = 1000;
     private val IMAGE_CAPTURE_CODE = 1001
-    //var conta = "Video : +50662428537 ;  Video  : +50662428537"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,9 +64,9 @@ class RegistroActivity : AppCompatActivity() {
 
                 builder.setPositiveButton("Si") { dialogInterface, which ->
 
-                    usuarionuevopref()
-                    getContactList()
-                    corrercorrutina()
+                    UsuarioNuevoPref()
+                    GetContactList()
+                    CorrerCorrutina()
 
                 }
                 builder.setNegativeButton("No") { dialogInterface, which ->
@@ -114,11 +113,11 @@ class RegistroActivity : AppCompatActivity() {
         val b: ByteArray = baos.toByteArray()
         return Base64.encodeToString(b, Base64.DEFAULT)
     }
-    fun corrercorrutina(){
+    fun CorrerCorrutina(){
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofit().create(APIServiceInsertar::class.java).registrationPost(listadecontactosentexto).execute()
             runOnUiThread {
-                Log.i("es", listadecontactosentexto.toString())
+                Log.i("", listadecontactosentexto.toString())
                 Log.i("", call.body().toString())
                 Log.i("", call.toString())
             }
@@ -152,8 +151,7 @@ class RegistroActivity : AppCompatActivity() {
         }
     }
 
-
-    fun usuarionuevopref(){
+    fun UsuarioNuevoPref(){
         val text = "Usuario agregado"
         val duration = Toast.LENGTH_SHORT
         CapaDatos.SharedApp.Usuario.Nombre = txt_Nombre.text.toString()
@@ -161,16 +159,7 @@ class RegistroActivity : AppCompatActivity() {
         CapaDatos.SharedApp.Usuario.Contraseña = txt_Contraseña.text.toString()
         CapaDatos.SharedApp.Usuario.Usuario = txt_UsuarioR.text.toString()
         CapaDatos.SharedApp.Usuario.Imagen = imagenenbase64
-        val listaser = CapaDatos.SharedApp.prefs2.name2
-        if(listaser != "") {
-            val gson = GsonBuilder().create()
-            val Model =
-                gson.fromJson(listaser, Array<CapaDatos.Usuario>::class.java).toMutableList()
-            CapaDatos.SharedApp.listaUsuarios = Model
-            CapaDatos.SharedApp.listaUsuarios.add(CapaDatos.SharedApp.Usuario)
-        }else {
-            CapaDatos.SharedApp.listaUsuarios.add(CapaDatos.SharedApp.Usuario)
-        }
+
         val gson = Gson()
         val listaser2 = gson.toJson(CapaDatos.SharedApp.listaUsuarios)
         CapaDatos.SharedApp.prefs2.name2 = listaser2
@@ -194,7 +183,7 @@ class RegistroActivity : AppCompatActivity() {
     var listadecontactosentexto: String=""
 
     @SuppressLint("Range")
-    private fun getContactList() {
+    private fun GetContactList() {
         val cr: ContentResolver = contentResolver
         val cur: Cursor?
         cur  = cr.query(
