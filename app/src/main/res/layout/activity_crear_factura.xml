@@ -5,11 +5,14 @@
     android:layout_height="match_parent"
     android:background="#615C5C">
 
-    <Button
-        android:id="@+id/btn_Crear_Factura"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:text="Crear factura"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="45dp" />
+        android:textColor="#F8F5F5"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
