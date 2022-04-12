@@ -22,7 +22,7 @@ class CapaDatos {
 
     class SharedApp : Application() {
         companion object {
-            lateinit var prefs2: Prefs
+            lateinit var prefs: Prefs
             lateinit var UbicacionUsu: UBICACIONUSUARIO
             lateinit var Foto : String
             lateinit var NomUsuario: String
@@ -30,15 +30,17 @@ class CapaDatos {
             lateinit var UsuarioJ : Usuario
             lateinit var listaUsuarios : MutableList<Usuario>
             var image_uri: Uri? = null
+            lateinit var database: UserDatabase
         }
 
         override fun onCreate() {
             super.onCreate()
-            prefs2 = Prefs(applicationContext)
+            prefs = Prefs(applicationContext)
             listaUsuarios = ArrayList()
             Usuario = Usuario("","","","","")
             UsuarioJ = Usuario("","","","","")
             NomUsuario = ""
+            database =  Room.databaseBuilder(this, UserDatabase::class.java, "user-db").build()
 
         }
     }
@@ -56,5 +58,37 @@ class CapaDatos {
         @SerializedName("Contraseña") var Contraseña:  String,
         @SerializedName("Imagen") var Imagen:  String
     )
+
+    @Entity(tableName = "user_db")
+    data class UserEntity (
+        @PrimaryKey()
+        var usuario:String = "",
+        var Nombre:String = "",
+        var apellido:String= "",
+        var Contrasena:String = "",
+        var imagen:String = "",
+        var isDone:Boolean = false
+    )
+
+    @Dao
+    interface TaskDao {
+        @Query("SELECT * FROM user_db ")
+        fun getAllTasks(): MutableList<UserEntity>
+        @Insert
+        fun addTask(taskEntity : UserEntity):Long
+        @Query("SELECT * FROM user_db where usuario like :usuario")
+        fun getTaskById(usuario: String): MutableList<UserEntity>
+        @Update
+        fun updateTask(userEntity: UserEntity):Int
+        @Delete
+        fun deleteTask(userEntity: UserEntity):Int
+        @Query("SELECT NULLIF(max(usuario),0) FROM user_db")
+        fun getMaxTaskid(): Int
+    }
+
+    @Database(entities = arrayOf(UserEntity::class), version = 1)
+    abstract class UserDatabase : RoomDatabase() {
+        abstract fun taskDao(): TaskDao
+    }
 
 }

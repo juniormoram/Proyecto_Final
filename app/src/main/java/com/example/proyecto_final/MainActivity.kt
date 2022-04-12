@@ -15,22 +15,22 @@ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-        lateinit var users: MutableList<CapaDatos.Usuario>
-    override fun onCreate(savedInstanceState: Bundle?) {
+        lateinit var users: MutableList<CapaDatos.UserEntity>
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         users = ArrayList()
         btn_Login.setOnClickListener {
-            BuscarUsuario()
+            buscarUsuario()
         }
         lbl_NuevoUsuario.setOnClickListener{
         startActivity(Intent(this,RegistroActivity::class.java))
     }
     }
 
-    fun BuscarUsuario() {
+    fun buscarUsuario() {
         var index1 = 0
-        val listaser2 = CapaDatos.SharedApp.prefs2.name2
+        val listaser2 = CapaDatos.SharedApp.prefs.name2
         if(listaser2 != "") {
             val gson2 = GsonBuilder().create()
             val Model = gson2.fromJson(listaser2, Array<CapaDatos.Usuario>::class.java)

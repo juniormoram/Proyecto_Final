@@ -43,6 +43,7 @@ class RegistroActivity : AppCompatActivity() {
 
     private val PERMISSION_CODE = 1000;
     private val IMAGE_CAPTURE_CODE = 1001
+    lateinit var users: MutableList<CapaDatos.UserEntity>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +53,8 @@ class RegistroActivity : AppCompatActivity() {
             this,
             arrayOf(Manifest.permission.READ_CONTACTS), 1
         )
+        users = ArrayList()
+
         lbl_Termin.setOnClickListener {
             startActivity(Intent(this, TerminosActivity::class.java))
         }
@@ -70,7 +73,7 @@ class RegistroActivity : AppCompatActivity() {
 
                 }
                 builder.setNegativeButton("No") { dialogInterface, which ->
-                    val listaser2 = CapaDatos.SharedApp.prefs2.name2
+                    val listaser2 = CapaDatos.SharedApp.prefs.name2
                     Toast.makeText(applicationContext, listaser2.toString(), Toast.LENGTH_LONG)
                         .show()
                 }
@@ -159,15 +162,24 @@ class RegistroActivity : AppCompatActivity() {
         CapaDatos.SharedApp.Usuario.Contraseña = txt_Contraseña.text.toString()
         CapaDatos.SharedApp.Usuario.Usuario = txt_UsuarioR.text.toString()
         CapaDatos.SharedApp.Usuario.Imagen = imagenenbase64
-
+        val listaser = CapaDatos.SharedApp.prefs.name2
+        if(listaser != "") {
+            val gson = GsonBuilder().create()
+            val Model = gson.fromJson(listaser, Array<CapaDatos.Usuario>::class.java).toMutableList()
+            CapaDatos.SharedApp.listaUsuarios = Model
+            CapaDatos.SharedApp.listaUsuarios.add(CapaDatos.SharedApp.Usuario)
+        }else {
+            CapaDatos.SharedApp.listaUsuarios.add(CapaDatos.SharedApp.Usuario)
+        }
         val gson = Gson()
         val listaser2 = gson.toJson(CapaDatos.SharedApp.listaUsuarios)
-        CapaDatos.SharedApp.prefs2.name2 = listaser2
+        CapaDatos.SharedApp.prefs.name2 = listaser2
         Log.d("Ususario agregado: ", CapaDatos.SharedApp.listaUsuarios.toString())
         val toast = Toast.makeText(applicationContext, text, duration)
         toast.show()
         clearFocus()
         hideKeyboard()
+
     }
     fun clearFocus(){
         txt_UsuarioR.setText("")
