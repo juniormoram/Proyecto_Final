@@ -15,7 +15,7 @@ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-        lateinit var users: MutableList<CapaDatos.UserEntity>
+        lateinit var users: MutableList<CapaDatos.Usuario>
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,10 +27,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this,RegistroActivity::class.java))
     }
     }
+    // BUSQUEDA DE USUARIO EN TABLA "Usuario"
 
     fun buscarUsuario() {
         var index1 = 0
         val listaser2 = CapaDatos.SharedApp.prefs.name2
+
+        // SE OBTIENEN LOS DATOS DE LA TABLA "Usuario"
         if(listaser2 != "") {
             val gson2 = GsonBuilder().create()
             val Model = gson2.fromJson(listaser2, Array<CapaDatos.Usuario>::class.java)
@@ -42,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             Log.d("Logueo: ","No hay usuarios")
         }
 
+        // SE BUSCA Y OBTIENE LA INFORMACIÓN DEL "Usuario" INDICADO EN EL INICIO DE SESIÓN
         for (item in CapaDatos.SharedApp.listaUsuarios){
             Log.d("Indice: ",index1.toString())
             if (CapaDatos.SharedApp.listaUsuarios[index1].Usuario == txt_Usuario.text.toString()){
@@ -63,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // SE VALIDAN LOS CREDENCIALES DEL USUARIO QUE INICIA SESIÓN
     fun ValidCredenPref(){
         val text = "Contraseña incorrecta"
         val text2 = "Usuario no existe"
