@@ -23,14 +23,14 @@ class CapaDatos {
     class SharedApp : Application() {
         companion object {
             lateinit var prefs: Prefs
-            lateinit var UbicacionUsu: UBICACIONUSUARIO
+            lateinit var UbicacionUsu: UbicacionUsuario
             lateinit var Foto : String
             lateinit var NomUsuario: String
             lateinit var Usuario : Usuario
             lateinit var UsuarioJ : Usuario
             lateinit var listaUsuarios : MutableList<Usuario>
             var image_uri: Uri? = null
-            lateinit var database: UserDatabase
+
         }
 
         override fun onCreate() {
@@ -40,12 +40,12 @@ class CapaDatos {
             Usuario = Usuario("","","","","")
             UsuarioJ = Usuario("","","","","")
             NomUsuario = ""
-            database =  Room.databaseBuilder(this, UserDatabase::class.java, "user-db").build()
+
 
         }
     }
 
-    data class UBICACIONUSUARIO(
+    data class UbicacionUsuario(
 
         var ejex:String,
         var ejey:String,
@@ -59,36 +59,5 @@ class CapaDatos {
         @SerializedName("Imagen") var Imagen:  String
     )
 
-    @Entity(tableName = "user_db")
-    data class UserEntity (
-        @PrimaryKey()
-        var usuario:String = "",
-        var Nombre:String = "",
-        var apellido:String= "",
-        var Contrasena:String = "",
-        var imagen:String = "",
-        var isDone:Boolean = false
-    )
-
-    @Dao
-    interface TaskDao {
-        @Query("SELECT * FROM user_db ")
-        fun getAllTasks(): MutableList<UserEntity>
-        @Insert
-        fun addTask(taskEntity : UserEntity):Long
-        @Query("SELECT * FROM user_db where usuario like :usuario")
-        fun getTaskById(usuario: String): MutableList<UserEntity>
-        @Update
-        fun updateTask(userEntity: UserEntity):Int
-        @Delete
-        fun deleteTask(userEntity: UserEntity):Int
-        @Query("SELECT NULLIF(max(usuario),0) FROM user_db")
-        fun getMaxTaskid(): Int
-    }
-
-    @Database(entities = arrayOf(UserEntity::class), version = 1)
-    abstract class UserDatabase : RoomDatabase() {
-        abstract fun taskDao(): TaskDao
-    }
 
 }

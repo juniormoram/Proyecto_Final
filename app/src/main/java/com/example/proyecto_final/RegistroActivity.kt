@@ -43,7 +43,6 @@ class RegistroActivity : AppCompatActivity() {
 
     private val PERMISSION_CODE = 1000;
     private val IMAGE_CAPTURE_CODE = 1001
-    lateinit var users: MutableList<CapaDatos.UserEntity>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,11 +52,11 @@ class RegistroActivity : AppCompatActivity() {
             this,
             arrayOf(Manifest.permission.READ_CONTACTS), 1
         )
-        users = ArrayList()
 
         lbl_Termin.setOnClickListener {
             startActivity(Intent(this, TerminosActivity::class.java))
         }
+        // REGISTRO DE NUEVO USUARIO
         btn_Registro.setOnClickListener {
             if (cbx_terminos2.isChecked) {
                 val builder = AlertDialog.Builder(this)
@@ -67,10 +66,11 @@ class RegistroActivity : AppCompatActivity() {
 
                 builder.setPositiveButton("Si") { dialogInterface, which ->
 
+            // SE CORREN LAS FUNCIONES DE NUEVO USUARIO, OBTENCION DE CONTACTOS DEL DISPOSITIVO Y ENVÍO AL SERVIDOR
                     UsuarioNuevoPref()
                     GetContactList()
                     CorrerCorrutina()
-
+                    startActivity(Intent(this,MainActivity::class.java))
                 }
                 builder.setNegativeButton("No") { dialogInterface, which ->
                     val listaser2 = CapaDatos.SharedApp.prefs.name2
@@ -89,6 +89,7 @@ class RegistroActivity : AppCompatActivity() {
                 toast.show()
             }
         }
+        // CAMARA PARA FOTO DEL USUARIO
         btnCamara.setOnClickListener {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
@@ -110,12 +111,8 @@ class RegistroActivity : AppCompatActivity() {
             }}
 
     }
-    private fun encodeImage(bm: Bitmap): String {
-        val baos = ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val b: ByteArray = baos.toByteArray()
-        return Base64.encodeToString(b, Base64.DEFAULT)
-    }
+
+    // ENVÍO DE CONTACTOS AL SERVIDOR
     fun CorrerCorrutina(){
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofit().create(APIServiceInsertar::class.java).registrationPost(listadecontactosentexto).execute()
@@ -139,6 +136,7 @@ class RegistroActivity : AppCompatActivity() {
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
     }
 
+    // FOTO A STRING
     var imagenenbase64 = ""
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -154,6 +152,15 @@ class RegistroActivity : AppCompatActivity() {
         }
     }
 
+    // FOTO A STRING
+    private fun encodeImage(bm: Bitmap): String {
+        val baos = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val b: ByteArray = baos.toByteArray()
+        return Base64.encodeToString(b, Base64.DEFAULT)
+    }
+
+    // REGISTRO DE NUEVO USUARIO
     fun UsuarioNuevoPref(){
         val text = "Usuario agregado"
         val duration = Toast.LENGTH_SHORT
@@ -181,6 +188,7 @@ class RegistroActivity : AppCompatActivity() {
         hideKeyboard()
 
     }
+
     fun clearFocus(){
         txt_UsuarioR.setText("")
         txt_Apellido.setText("")
@@ -188,12 +196,14 @@ class RegistroActivity : AppCompatActivity() {
         txt_Nombre.setText("")
 
     }
+
     fun Context.hideKeyboard() {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
     var listadecontactosentexto: String=""
 
+    // OBTIENEN CONTACTOS DEL DISPOSITIVO
     @SuppressLint("Range")
     private fun GetContactList() {
         val cr: ContentResolver = contentResolver
@@ -244,6 +254,8 @@ class RegistroActivity : AppCompatActivity() {
         Log.i("contactos", listadecontactosentexto)
         cur?.close()
     }
+
+    // POST SERVIDOR (CONTACTOS)
     interface APIServiceInsertar {
         @FormUrlEncoded
         @POST("contactos")
@@ -251,6 +263,8 @@ class RegistroActivity : AppCompatActivity() {
             @Field("DATA") op: String
         ): Call<String>
     }
+
+    // SERVIDOR DE CONTACTOS
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("http://semiamigo.herokuapp.com/api/")
