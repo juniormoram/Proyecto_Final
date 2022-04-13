@@ -24,7 +24,6 @@ class CapaDatos {
         companion object {
             lateinit var prefs: Prefs
             lateinit var UbicacionUsu: UbicacionUsuario
-            lateinit var Foto : String
             lateinit var NomUsuario: String
             lateinit var Usuario : Usuario
             lateinit var UsuarioJ : Usuario
