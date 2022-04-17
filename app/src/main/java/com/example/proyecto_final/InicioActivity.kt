@@ -11,7 +11,7 @@ class InicioActivity:AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
         btn_Crear_Factura.setOnClickListener{
-            startActivity(Intent(this,InicioActivity::class.java))
+            startActivity(Intent(this,RegistroFacturaActivity::class.java))
         }
     }
 

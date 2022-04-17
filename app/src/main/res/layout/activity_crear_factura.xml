@@ -1,18 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#615C5C">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/facturaTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="108dp"
         android:fontFamily="sans-serif"
         android:text="Crear factura"
         android:textColor="#F8F5F5"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/emisorTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="18dp"
+        android:text="Emisor"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/emisorSelection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/emisorSelection"
+        android:layout_width="200dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="56dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        android:text="buscar emisor"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/emisorTxt"
+        app:layout_constraintTop_toBottomOf="@+id/facturaTitle" />
+
+    <TextView
+        android:id="@+id/receptorTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="56dp"
+        android:text="Receptor"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emisorTxt" />
+
+    <Spinner
+        android:id="@+id/receptorSelection"
+        android:layout_width="200dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="56dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        android:text="buscar receptor"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toEndOf="@+id/receptorTxt"
+        app:layout_constraintTop_toBottomOf="@+id/emisorSelection" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,6 +33,7 @@
         <activity android:name=".InicioActivity" />
         <activity android:name=".RegistroActivity" />
         <activity android:name=".TerminosActivity" />
+        <activity android:name=".RegistroFacturaActivity" />
     </application>
 
 </manifest>
