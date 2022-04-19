@@ -21,62 +21,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/emisorTxt"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/emisorBtn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="18dp"
-        android:text="Emisor"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/emisorSelection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="35dp"
+        android:text="Seleccionar emisor"
+        app:layout_constraintBottom_toTopOf="@+id/receptorBtn"
+        app:layout_constraintTop_toBottomOf="@+id/facturaTitle"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <Spinner
-        android:id="@+id/emisorSelection"
-        android:layout_width="200dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="56dp"
-        android:background="@color/white"
-        android:backgroundTint="#FFFFFF"
-        android:text="buscar emisor"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/emisorTxt"
-        app:layout_constraintTop_toBottomOf="@+id/facturaTitle" />
-
-    <TextView
-        android:id="@+id/receptorTxt"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/receptorBtn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="56dp"
-        android:text="Receptor"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emisorTxt" />
+        android:layout_marginTop="35dp"
+        android:text="Seleccionar receptor"
+        app:layout_constraintTop_toBottomOf="@+id/emisorBtn"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <Spinner
-        android:id="@+id/receptorSelection"
-        android:layout_width="200dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginEnd="56dp"
-        android:background="@color/white"
-        android:backgroundTint="#FFFFFF"
-        android:text="buscar receptor"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.357"
-        app:layout_constraintStart_toEndOf="@+id/receptorTxt"
-        app:layout_constraintTop_toBottomOf="@+id/emisorSelection" />
 </androidx.constraintlayout.widget.ConstraintLayout>
