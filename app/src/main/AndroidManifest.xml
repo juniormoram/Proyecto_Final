@@ -34,6 +34,7 @@
         <activity android:name=".RegistroActivity" />
         <activity android:name=".TerminosActivity" />
         <activity android:name=".RegistroFacturaActivity" />
+        <activity android:name=".ListaPersonasActivity" />
     </application>
 
 </manifest>
