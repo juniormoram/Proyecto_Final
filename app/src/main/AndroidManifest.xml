@@ -38,6 +38,7 @@
         <activity android:name=".ListaReceptorActivity" />
         <activity android:name=".ListaInfoActivity" />
         <activity android:name=".FacturaFormActivity" />
+        <activity android:name=".ListaDetallesActivity" />
     </application>
 
 </manifest>

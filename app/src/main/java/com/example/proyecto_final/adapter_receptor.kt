@@ -31,7 +31,7 @@ class adapter_receptor : RecyclerView.Adapter<adapter_receptor.ViewHolder>()  {
     }
     private fun onBtnClickListener(receptor: CapaDatos.PERSONA){
         Toast.makeText(context, "persona: ${receptor.NOMBRE1}", Toast.LENGTH_LONG).show()
-        RegistroFacturaActivity.SharedApp.receptorFactura = receptor
+        CapaDatos.SharedApp.receptorFactura = receptor
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

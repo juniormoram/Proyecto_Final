@@ -22,9 +22,9 @@ class ListaReceptorActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofitPERSONA().create(RegistroFacturaActivity.APIServicePERSONA::class.java).registrationPost().execute()
             runOnUiThread {
-                RegistroFacturaActivity.SharedApp.receptores = call.body()!!
+                CapaDatos.SharedApp.receptores = call.body()!!
                 Log.i("", call.body()!!.toString())
-                Log.i("", RegistroFacturaActivity.SharedApp.receptores.toString())
+                Log.i("", CapaDatos.SharedApp.receptores.toString())
                 setUpRecyclerViewReceptor()
             }
         }
@@ -36,7 +36,7 @@ class ListaReceptorActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.listapersonas) as RecyclerView
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mAdapterReceptor.adapter_receptor(RegistroFacturaActivity.SharedApp.receptores, this)
+        mAdapterReceptor.adapter_receptor(CapaDatos.SharedApp.receptores, this)
         mRecyclerView.adapter = mAdapterReceptor
 
     }

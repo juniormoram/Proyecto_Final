@@ -43,7 +43,7 @@ class adapter_emisor : RecyclerView.Adapter<adapter_emisor.ViewHolder>()  {
 
     private fun onBtnClickListener(emisor: CapaDatos.PERSONA){
         Toast.makeText(context, "persona: ${emisor.NOMBRE1}", Toast.LENGTH_LONG).show()
-        RegistroFacturaActivity.SharedApp.emisorFactura = emisor
+        CapaDatos.SharedApp.emisorFactura = emisor
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
