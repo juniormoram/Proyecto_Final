@@ -18,6 +18,9 @@ class ListaPersonasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_layout_lista)
+        getPersonas()
+    }
+    fun getPersonas(){
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofitPERSONA().create(RegistroFacturaActivity.APIServicePERSONA::class.java).registrationPost().execute()
             runOnUiThread {
@@ -25,8 +28,8 @@ class ListaPersonasActivity : AppCompatActivity() {
                 Log.i("", call.body()!!.toString())
                 Log.i("", RegistroFacturaActivity.SharedApp.emisores.toString())
                 setUpRecyclerViewEmisor()
-                }
             }
+        }
     }
     lateinit var mRecyclerView : RecyclerView
     val mAdapterEmisor : adapter_emisor = adapter_emisor()
