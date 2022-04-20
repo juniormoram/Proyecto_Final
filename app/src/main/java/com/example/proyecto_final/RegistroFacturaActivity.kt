@@ -24,7 +24,7 @@ class RegistroFacturaActivity : AppCompatActivity() {
             startActivity(Intent(this,ListaPersonasActivity::class.java))
         }
         receptorBtn.setOnClickListener{
-            startActivity(Intent(this,ListaPersonasActivity::class.java))
+            startActivity(Intent(this,ListaReceptorActivity::class.java))
         }
 
     }

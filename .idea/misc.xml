@@ -3,13 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/UIA/Labs/Proyecto_Final/app/src/main/res/layout/activity_crear_factura.xml" value="0.25" />
-        <entry key="..\:/UIA/Labs/Proyecto_Final/app/src/main/res/layout/activity_inicio.xml" value="0.25" />
-        <entry key="..\:/UIA/Labs/Proyecto_Final/app/src/main/res/layout/activity_main.xml" value="0.16847826086956522" />
-        <entry key="..\:/UIA/Labs/Proyecto_Final/app/src/main/res/layout/activity_registro.xml" value="0.16847826086956522" />
-        <entry key="..\:/UIA/Labs/Proyecto_Final/app/src/main/res/layout/activity_termcond.xml" value="0.16847826086956522" />
-        <entry key="..\:/UIA/Labs/Proyecto_Final/app/src/main/res/layout/item_layout_emisor.xml" value="0.25" />
-        <entry key="..\:/UIA/Labs/Proyecto_Final/app/src/main/res/layout/item_layout_lista.xml" value="0.20416666666666666" />
+        <entry key="..\:/Proyecto_Final/app/src/main/res/layout/activity_crear_factura.xml" value="0.25" />
+        <entry key="..\:/Proyecto_Final/app/src/main/res/layout/activity_registro.xml" value="0.19610507246376813" />
+        <entry key="..\:/Proyecto_Final/app/src/main/res/layout/item_layout_emisor.xml" value="0.22" />
+        <entry key="..\:/Proyecto_Final/app/src/main/res/layout/item_layout_lista.xml" value="0.1" />
+        <entry key="..\:/Proyecto_Final/app/src/main/res/layout/item_layout_receptor.xml" value="0.17831813576494426" />
+        <entry key="..\:/Proyecto_Final/app/src/main/res/layout/layout_lista_receptor.xml" value="0.25" />
         <entry key="..\:/Users/DELL/Desktop/Lenguajes/Proyecto/Proyecto_Final/app/src/main/res/layout/activity_inicio.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/DELL/Desktop/Lenguajes/Proyecto/Proyecto_Final/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/DELL/Desktop/Lenguajes/Proyecto/Proyecto_Final/app/src/main/res/layout/activity_registro.xml" value="0.17074275362318841" />

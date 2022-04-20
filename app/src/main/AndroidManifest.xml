@@ -35,6 +35,7 @@
         <activity android:name=".TerminosActivity" />
         <activity android:name=".RegistroFacturaActivity" />
         <activity android:name=".ListaPersonasActivity" />
+        <activity android:name=".ListaReceptorActivity" />
     </application>
 
 </manifest>
