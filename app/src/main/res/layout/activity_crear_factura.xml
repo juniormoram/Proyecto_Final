@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/invoicesView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#615C5C">
+
+    <TextView
+        android:id="@+id/facturaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="108dp"
+        android:fontFamily="sans-serif"
+        android:text="Crear factura"
+        android:textColor="#F8F5F5"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/emisorBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="35dp"
+        android:text="Seleccionar emisor"
+        app:layout_constraintBottom_toTopOf="@+id/receptorBtn"
+        app:layout_constraintTop_toBottomOf="@+id/facturaTitle"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/receptorBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Seleccionar receptor"
+        app:layout_constraintTop_toBottomOf="@+id/emisorBtn"
+        tools:layout_editor_absoluteX="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
