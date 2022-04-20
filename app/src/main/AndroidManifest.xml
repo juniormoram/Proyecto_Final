@@ -36,6 +36,7 @@
         <activity android:name=".RegistroFacturaActivity" />
         <activity android:name=".ListaPersonasActivity" />
         <activity android:name=".ListaReceptorActivity" />
+        <activity android:name=".ListaInfoActivity" />
     </application>
 
 </manifest>
