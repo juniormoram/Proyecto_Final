@@ -31,37 +31,6 @@ class RegistroFacturaActivity : AppCompatActivity() {
             startActivity(Intent(this,ListaDetallesActivity::class.java))
         }
     }
-
-    class SharedApp : Application() {
-        companion object {
-            lateinit var diasdelmes: MutableList<CapaDatos.FECHA>
-            lateinit var emisores: MutableList<CapaDatos.PERSONA>
-            lateinit var receptores: MutableList<CapaDatos.PERSONA>
-            lateinit var infos: MutableList<CapaDatos.INFORMACIONREFERENCIA>
-            lateinit var details: MutableList<CapaDatos.LINEADETALLE>
-
-            //INFORMACION DE FACTURA ACTUAL
-            lateinit var emisorFactura: CapaDatos.PERSONA
-            lateinit var receptorFactura: CapaDatos.PERSONA
-            lateinit var infoFactura: CapaDatos.INFORMACIONREFERENCIA
-            lateinit var lineasDetalleSelected: MutableList<CapaDatos.LINEADETALLE>
-        }
-
-        override fun onCreate() {
-            super.onCreate()
-//guardamos una lista de la clase fecha, que nos debe devolver la peticion
-            diasdelmes  = ArrayList()
-            emisores  = ArrayList()
-            receptores = ArrayList()
-            infos = ArrayList()
-            details = ArrayList()
-            //Instancia persona vacia para emisor y receptor
-            emisorFactura = CapaDatos.PERSONA()
-            receptorFactura = CapaDatos.PERSONA()
-            infoFactura = CapaDatos.INFORMACIONREFERENCIA()
-            lineasDetalleSelected = ArrayList()
-        }
-    }
     interface APIService {
         @POST("Calendario")
         @FormUrlEncoded

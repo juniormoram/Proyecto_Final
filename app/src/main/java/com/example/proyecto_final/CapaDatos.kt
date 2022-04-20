@@ -31,6 +31,19 @@ class CapaDatos {
             lateinit var listaUsuarios : MutableList<Usuario>
             var image_uri: Uri? = null
             lateinit var database: UserDatabase
+
+
+            lateinit var diasdelmes: MutableList<FECHA>
+            lateinit var emisores: MutableList< PERSONA>
+            lateinit var receptores: MutableList<PERSONA>
+            lateinit var infos: MutableList<  INFORMACIONREFERENCIA>
+            lateinit var details: MutableList< LINEADETALLE>
+
+            //INFORMACION DE FACTURA ACTUAL
+            lateinit var emisorFactura: PERSONA
+            lateinit var receptorFactura: PERSONA
+            lateinit var infoFactura: INFORMACIONREFERENCIA
+            lateinit var lineasDetalleSelected: MutableList<LINEADETALLE>
         }
 
         override fun onCreate() {
@@ -41,6 +54,19 @@ class CapaDatos {
             UsuarioJ = Usuario("","","","","")
             NomUsuario = ""
             database =  Room.databaseBuilder(this, UserDatabase::class.java, "user-db").build()
+
+
+//guardamos una lista de la clase fecha, que nos debe devolver la peticion
+            diasdelmes = ArrayList()
+            emisores = ArrayList()
+            receptores = ArrayList()
+            infos = ArrayList()
+            details = ArrayList()
+            //Instancia persona vacia para emisor y receptor
+            emisorFactura = PERSONA()
+            receptorFactura = PERSONA()
+            infoFactura = INFORMACIONREFERENCIA()
+            lineasDetalleSelected = ArrayList()
 
         }
     }

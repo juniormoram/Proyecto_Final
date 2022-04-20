@@ -22,9 +22,9 @@ class ListaInfoActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofitINFO().create(RegistroFacturaActivity.APIServiceINFO::class.java).registrationPost().execute()
             runOnUiThread {
-                RegistroFacturaActivity.SharedApp.infos = call.body()!!
+                CapaDatos.SharedApp.infos = call.body()!!
                 Log.i("", call.body()!!.toString())
-                Log.i("", RegistroFacturaActivity.SharedApp.infos.toString())
+                Log.i("", CapaDatos.SharedApp.infos.toString())
                 setUpRecyclerViewInfo()
             }
         }
@@ -36,7 +36,7 @@ class ListaInfoActivity : AppCompatActivity() {
         mRecyclerView = findViewById(R.id.listainfo) as RecyclerView
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mAdapterInfo.adapter_info(RegistroFacturaActivity.SharedApp.infos, this)
+        mAdapterInfo.adapter_info(CapaDatos.SharedApp.infos, this)
         mRecyclerView.adapter = mAdapterInfo
 
     }

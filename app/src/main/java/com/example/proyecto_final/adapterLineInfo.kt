@@ -28,14 +28,11 @@ class adapterLineInfo : RecyclerView.Adapter<adapterLineInfo.ViewHolder>()  {
     fun onClickListener(lineaDetalle : CapaDatos.LINEADETALLE, view: ViewHolder) {
         val checkBoxIsSelected = view.checkBoxS.isSelected
         view.checkBoxS.isSelected = !checkBoxIsSelected
-        var isSelected = -1
-        if(RegistroFacturaActivity.SharedApp.lineasDetalleSelected.size > 0){
-            isSelected = RegistroFacturaActivity.SharedApp.lineasDetalleSelected.indexOf(lineaDetalle)
-        }
+        var isSelected = CapaDatos.SharedApp.lineasDetalleSelected.indexOf(lineaDetalle)
         if(isSelected == -1){
-            RegistroFacturaActivity.SharedApp.lineasDetalleSelected.add(lineaDetalle)
+            CapaDatos.SharedApp.lineasDetalleSelected.add(lineaDetalle)
         } else{
-            RegistroFacturaActivity.SharedApp.lineasDetalleSelected.remove(lineaDetalle)
+            CapaDatos.SharedApp.lineasDetalleSelected.remove(lineaDetalle)
         }
     }
 

@@ -20,15 +20,15 @@ class ListaDetallesActivity : AppCompatActivity() {
         getDetailInfoLines()
         selectBtn.setOnClickListener{
             startActivity(Intent(this,RegistroFacturaActivity::class.java))
-            Log.i("","Detalles seleccionados: ${RegistroFacturaActivity.SharedApp.lineasDetalleSelected}")
+            Log.i("","Detalles seleccionados: ${CapaDatos.SharedApp.lineasDetalleSelected}")
         }
     }
     fun getDetailInfoLines(){
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofitDetailLines().create(RegistroFacturaActivity.APIServiceDetailsINFO::class.java).registrationPost().execute()
             runOnUiThread {
-                RegistroFacturaActivity.SharedApp.details = call.body()!!
-                Log.i("", RegistroFacturaActivity.SharedApp.details.toString())
+                CapaDatos.SharedApp.details = call.body()!!
+                Log.i("", CapaDatos.SharedApp.details.toString())
                 setUpRecyclerViewInfo()
             }
         }
@@ -40,7 +40,7 @@ class ListaDetallesActivity : AppCompatActivity() {
         mRecyclerView = findViewById<RecyclerView>(R.id.detailLinesID)
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(this)
-        mAdapterInfo.adapterLineInfo(RegistroFacturaActivity.SharedApp.details, this)
+        mAdapterInfo.adapterLineInfo(CapaDatos.SharedApp.details, this)
         mRecyclerView.adapter = mAdapterInfo
 
     }
