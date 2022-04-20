@@ -42,4 +42,13 @@
         app:layout_constraintTop_toBottomOf="@+id/emisorBtn"
         tools:layout_editor_absoluteX="0dp" />
 
+    <Button
+        android:id="@+id/infoBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Seleccionar información referencia"
+        app:layout_constraintTop_toBottomOf="@+id/receptorBtn"
+        tools:layout_editor_absoluteX="0dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
