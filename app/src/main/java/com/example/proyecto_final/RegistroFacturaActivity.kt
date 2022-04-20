@@ -30,6 +30,9 @@ class RegistroFacturaActivity : AppCompatActivity() {
         infoBtn.setOnClickListener{
             startActivity(Intent(this,ListaInfoActivity::class.java))
         }
+        facturaBtn.setOnClickListener{
+            startActivity(Intent(this,FacturaFormActivity::class.java))
+        }
     }
 
     class SharedApp : Application() {
