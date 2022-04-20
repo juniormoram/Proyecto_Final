@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -23,6 +24,13 @@ class adapter_info : RecyclerView.Adapter<adapter_info.ViewHolder>()  {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = infos.get(position)
         holder.bind(item, context)
+        holder.botonselecciona.setOnClickListener{
+            val info: CapaDatos.INFORMACIONREFERENCIA = infos.get(position)
+            onBtnClickListener(info)
+        }
+    }
+    private fun onBtnClickListener(info: CapaDatos.INFORMACIONREFERENCIA){
+        RegistroFacturaActivity.SharedApp.infoFactura = info
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

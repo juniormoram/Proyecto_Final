@@ -121,11 +121,11 @@ class CapaDatos {
     )
 
     data class INFORMACIONREFERENCIA(
-        @SerializedName("TIPODOC1") var TIPODOC1: String,
-        @SerializedName("NUMERO1") var NUMERO1: String,
-        @SerializedName("FECHAEMISION1") var FECHAEMISION1: String,
-        @SerializedName("CODIGO1") var CODIGO1: String,
-        @SerializedName("RAZON1") var RAZON1: String,
+        @SerializedName("TIPODOC1") var TIPODOC1: String = "",
+        @SerializedName("NUMERO1") var NUMERO1: String = "",
+        @SerializedName("FECHAEMISION1") var FECHAEMISION1: String = "",
+        @SerializedName("CODIGO1") var CODIGO1: String = "",
+        @SerializedName("RAZON1") var RAZON1: String = "",
     )
 
     data class EMPRESA(

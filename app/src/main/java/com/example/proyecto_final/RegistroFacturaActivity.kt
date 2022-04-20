@@ -3,6 +3,7 @@ package com.example.proyecto_final
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_crear_factura.*
 import retrofit2.Call
@@ -39,6 +40,7 @@ class RegistroFacturaActivity : AppCompatActivity() {
             lateinit var infos: MutableList<CapaDatos.INFORMACIONREFERENCIA>
             lateinit var emisorFactura: CapaDatos.PERSONA
             lateinit var receptorFactura: CapaDatos.PERSONA
+            lateinit var infoFactura: CapaDatos.INFORMACIONREFERENCIA
         }
 
         override fun onCreate() {
@@ -51,6 +53,7 @@ class RegistroFacturaActivity : AppCompatActivity() {
             //Instancia persona vacia para emisor y receptor
             emisorFactura = CapaDatos.PERSONA()
             receptorFactura = CapaDatos.PERSONA()
+            infoFactura = CapaDatos.INFORMACIONREFERENCIA()
         }
     }
     interface APIService {
