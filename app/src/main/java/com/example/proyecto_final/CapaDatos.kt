@@ -184,5 +184,52 @@ class CapaDatos {
         @SerializedName("NUMERO_MINUTO_INICIA") var NUMERO_MINUTO_INICIA: Number,
         @SerializedName("TERMINAL") var TERMINAL:String
     )
+    data class LINEADETALLE(
 
+        @SerializedName("NUMEROLINEA1") var NUMEROLINEA1: Int = 0,
+        @SerializedName("PARTIDAARANCELARIA1") var PARTIDAARANCELARIA1: String = "",
+        @SerializedName("CODIGO1") var CODIGO1: String = "",
+        @SerializedName("CANTIDAD1") var CANTIDAD1: Double = 0.0,
+        @SerializedName("UNIDADMEDIDA1") var UNIDADMEDIDA1: String = "",
+        @SerializedName("UNIDADMEDIDACOMERCIAL1") var UNIDADMEDIDACOMERCIAL1: String = "",
+        @SerializedName("DETALLE1") var DETALLE1: String = "",
+        @SerializedName("PRECIOUNITARIO_1") var PRECIOUNITARIO_1: Double = 0.0,
+        @SerializedName("MONTOTOTAL1") var MONTOTOTAL1: Double = 0.0,
+        @SerializedName("SUBTOTAL1") var SUBTOTAL1: Double = 0.0,
+        @SerializedName("BASEIMPONIBLE_1") var BASEIMPONIBLE_1: Double = 0.0,
+        @SerializedName("IMPUESTONETO1") var IMPUESTONETO1: Double = 0.0,
+        @SerializedName("MONTOTOTALLINEA1") var MONTOTOTALLINEA1: Double = 0.0,
+        @SerializedName("CODIGOCOMERCIAL") var CODIGOCOMERCIAL: CODIGOCOMERCIAL = CODIGOCOMERCIAL(),
+        @SerializedName("DESCUENTOs") var DESCUENTOs: MutableList<DESCUENTO> = ArrayList(),
+        @SerializedName("IMPUESTOs") var IMPUESTOs: MutableList<IMPUESTO> = ArrayList()
+    )
+
+    data class CODIGOCOMERCIAL(
+        @SerializedName("TIPO1") var TIPO1: String = "",
+        @SerializedName("CODIGO1") var CODIGO1: String = "",
+    )
+    data class DESCUENTO(
+        @SerializedName("MONTODESCUETO") var MONTODESCUETO: Double = 0.0,
+        @SerializedName("NATURALEZADESCUENTO") var NATURALEZADESCUETO: String = ""
+
+    )
+    data class IMPUESTO(
+        @SerializedName("CODIGO1") var CODIGO1: String = "",
+        @SerializedName("TARIFA1") var TARIFA1: Double = 0.0,
+        @SerializedName("FACTORIVAL") var FACTORIVAL: Double = 0.0,
+        @SerializedName("MONTO1") var MONTO1: Double = 0.0,
+        @SerializedName("MONTOEXPORTACION1") var MONTOEXPORTACION1: Double = 0.0,
+        @SerializedName("EXONERACION") var EXONERACION: EXONERACION = EXONERACION(),
+        @SerializedName("CODIGOTARIFA1") var CODIGOTARIFA1: String = ""
+
+    )
+    data class EXONERACION(
+        @SerializedName("TIPODOCUMENTO1") var TIPODOCUMENTO1: String = "",
+        @SerializedName("NUMERODOCUMENTO1") var NUMERODOCUMENTO1: String = "",
+        @SerializedName("NOMBREINSTITUCION1") var NOMBREINSTITUCION1: String = "",
+        @SerializedName("FECHAEMISION1") var FECHAEMISION1: String = "",
+        @SerializedName("PORCENTAJEEXONERACION1") var PORCENTAJEEXONERACION1: Int = 0,
+        @SerializedName("MONTOEXONERACION1") var MONTOEXONERACION1: Double = 0.0
+
+    )
 }
