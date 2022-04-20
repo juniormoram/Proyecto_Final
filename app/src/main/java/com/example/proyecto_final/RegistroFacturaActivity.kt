@@ -3,12 +3,9 @@ package com.example.proyecto_final
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_crear_factura.*
 import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -30,30 +27,8 @@ class RegistroFacturaActivity : AppCompatActivity() {
         infoBtn.setOnClickListener{
             startActivity(Intent(this,ListaInfoActivity::class.java))
         }
-    }
-
-    class SharedApp : Application() {
-        companion object {
-            lateinit var diasdelmes: MutableList<CapaDatos.FECHA>
-            lateinit var emisores: MutableList<CapaDatos.PERSONA>
-            lateinit var receptores: MutableList<CapaDatos.PERSONA>
-            lateinit var infos: MutableList<CapaDatos.INFORMACIONREFERENCIA>
-            lateinit var emisorFactura: CapaDatos.PERSONA
-            lateinit var receptorFactura: CapaDatos.PERSONA
-            lateinit var infoFactura: CapaDatos.INFORMACIONREFERENCIA
-        }
-
-        override fun onCreate() {
-            super.onCreate()
-//guardamos una lista de la clase fecha, que nos debe devolver la peticion
-            diasdelmes  = ArrayList()
-            emisores  = ArrayList()
-            receptores = ArrayList()
-            infos = ArrayList()
-            //Instancia persona vacia para emisor y receptor
-            emisorFactura = CapaDatos.PERSONA()
-            receptorFactura = CapaDatos.PERSONA()
-            infoFactura = CapaDatos.INFORMACIONREFERENCIA()
+        detailsLineBtn.setOnClickListener{
+            startActivity(Intent(this,ListaDetallesActivity::class.java))
         }
     }
     interface APIService {
@@ -78,6 +53,12 @@ class RegistroFacturaActivity : AppCompatActivity() {
         //FUNCION SIN PARÁMETROS, GET NO RECIBE PARÁMETROS
         fun registrationPost(
         ): Call<MutableList<CapaDatos.INFORMACIONREFERENCIA>> //IMPORTANTE EL GET DEVUELVE UNA LISTA DE LA CLASE RESPECTIVA
+    }
+    interface APIServiceDetailsINFO {
+        @GET("LINEADETALLE")
+        //FUNCION SIN PARÁMETROS, GET NO RECIBE PARÁMETROS
+        fun registrationPost(
+        ): Call<MutableList<CapaDatos.LINEADETALLE>> //IMPORTANTE EL GET DEVUELVE UNA LISTA DE LA CLASE RESPECTIVA
     }
 
 }

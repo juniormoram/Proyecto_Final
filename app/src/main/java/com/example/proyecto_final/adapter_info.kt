@@ -30,7 +30,7 @@ class adapter_info : RecyclerView.Adapter<adapter_info.ViewHolder>()  {
         }
     }
     private fun onBtnClickListener(info: CapaDatos.INFORMACIONREFERENCIA){
-        RegistroFacturaActivity.SharedApp.infoFactura = info
+        CapaDatos.SharedApp.infoFactura = info
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
