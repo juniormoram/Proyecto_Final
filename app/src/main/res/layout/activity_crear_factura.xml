@@ -52,12 +52,21 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
+        android:id="@+id/facturaBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Crear Factura"
+        app:layout_constraintTop_toBottomOf="@+id/infoBtn"
+        tools:layout_editor_absoluteX="0dp" />
+  
+  <Button
         android:id="@+id/detailsLineBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:text="SELECCIONAR LINEAS DE DETALLE"
-        app:layout_constraintTop_toBottomOf="@+id/infoBtn"
+        app:layout_constraintTop_toBottomOf="@+id/facturaBtn"
         tools:layout_editor_absoluteX="156dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
