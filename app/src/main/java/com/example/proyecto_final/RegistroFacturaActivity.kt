@@ -37,6 +37,8 @@ class RegistroFacturaActivity : AppCompatActivity() {
             lateinit var emisores: MutableList<CapaDatos.PERSONA>
             lateinit var receptores: MutableList<CapaDatos.PERSONA>
             lateinit var infos: MutableList<CapaDatos.INFORMACIONREFERENCIA>
+            lateinit var emisorFactura: CapaDatos.PERSONA
+            lateinit var receptorFactura: CapaDatos.PERSONA
         }
 
         override fun onCreate() {
@@ -46,6 +48,9 @@ class RegistroFacturaActivity : AppCompatActivity() {
             emisores  = ArrayList()
             receptores = ArrayList()
             infos = ArrayList()
+            //Instancia persona vacia para emisor y receptor
+            emisorFactura = CapaDatos.PERSONA()
+            receptorFactura = CapaDatos.PERSONA()
         }
     }
     interface APIService {

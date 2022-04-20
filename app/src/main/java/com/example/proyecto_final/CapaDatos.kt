@@ -95,29 +95,29 @@ class CapaDatos {
     ////
 
     data class UBICACION(
-        @SerializedName("PROVINCIA1") var PROVINCIA1: String,
-        @SerializedName("CANTON1") var CANTON1: String,
-        @SerializedName("DISTRITO1") var DISTRITO1: String,
-        @SerializedName("BARRIO1") var BARRIO1: String,
-        @SerializedName("OTRASSENAS1") var OTRASSENAS1: String,
-        @SerializedName("ID1") var ID1: String
+        @SerializedName("PROVINCIA1") var PROVINCIA1: String = "",
+        @SerializedName("CANTON1") var CANTON1: String = "",
+        @SerializedName("DISTRITO1") var DISTRITO1: String = "",
+        @SerializedName("BARRIO1") var BARRIO1: String = "",
+        @SerializedName("OTRASSENAS1") var OTRASSENAS1: String = "",
+        @SerializedName("ID1") var ID1: String = ""
     )
     data class TELEFONOFAX
         (
-        @SerializedName("CODIGOPAIS1") var CODIGOPAIS1: String,
-        @SerializedName("NUMTELEFONO1") var NUMTELEFONO1: String
+        @SerializedName("CODIGOPAIS1") var CODIGOPAIS1: String = "",
+        @SerializedName("NUMTELEFONO1") var NUMTELEFONO1: String = ""
     )
     data class PERSONA
         (
-        @SerializedName("NOMBRE1") var NOMBRE1: String,
-        @SerializedName("TIPO") var TIPO: String,
-        @SerializedName("NUMERO1") var NUMERO1: String,
-        @SerializedName("NOMBRECOMERCIAL1") var NOMBRECOMERCIAL1: String,
-        @SerializedName("CORREOELECTRONICO1") var CORREOELECTRONICO1: String,
-        @SerializedName("IDENTIFICACIONEXTRANJERO1") var IDENTIFICACIONEXTRANJERO1: String,
-        @SerializedName("IDUBICACION1") var IDUBICACION1: UBICACION,
-        @SerializedName("TELEFONO1") var TELEFONO1: TELEFONOFAX,
-        @SerializedName("FAX1") var FAX1: TELEFONOFAX
+        @SerializedName("NOMBRE1") var NOMBRE1: String = "",
+        @SerializedName("TIPO") var TIPO: String = "",
+        @SerializedName("NUMERO1") var NUMERO1: String = "",
+        @SerializedName("NOMBRECOMERCIAL1") var NOMBRECOMERCIAL1: String = "",
+        @SerializedName("CORREOELECTRONICO1") var CORREOELECTRONICO1: String = "",
+        @SerializedName("IDENTIFICACIONEXTRANJERO1") var IDENTIFICACIONEXTRANJERO1: String = "",
+        @SerializedName("IDUBICACION1") var IDUBICACION1: UBICACION = UBICACION(),
+        @SerializedName("TELEFONO1") var TELEFONO1: TELEFONOFAX = TELEFONOFAX(),
+        @SerializedName("FAX1") var FAX1: TELEFONOFAX = TELEFONOFAX()
     )
 
     data class INFORMACIONREFERENCIA(
