@@ -17,6 +17,7 @@ class ListaPersonasActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.item_layout_lista)
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofitPERSONA().create(RegistroFacturaActivity.APIServicePERSONA::class.java).registrationPost().execute()
             runOnUiThread {
