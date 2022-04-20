@@ -8,10 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.*
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.*
 
 class ListaPersonasActivity : AppCompatActivity() {
 
@@ -20,7 +18,7 @@ class ListaPersonasActivity : AppCompatActivity() {
         setContentView(R.layout.item_layout_lista)
         getPersonas()
     }
-    fun getPersonas(){
+    private fun getPersonas(){
         CoroutineScope(Dispatchers.IO).launch {
             val call = getRetrofitPERSONA().create(RegistroFacturaActivity.APIServicePERSONA::class.java).registrationPost().execute()
             runOnUiThread {

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -23,6 +24,14 @@ class adapter_receptor : RecyclerView.Adapter<adapter_receptor.ViewHolder>()  {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = receptores.get(position)
         holder.bind(item, context)
+        holder.botonselecciona.setOnClickListener{
+            val receptor: CapaDatos.PERSONA = receptores.get(position)
+            onBtnClickListener(receptor)
+        }
+    }
+    private fun onBtnClickListener(receptor: CapaDatos.PERSONA){
+        Toast.makeText(context, "persona: ${receptor.NOMBRE1}", Toast.LENGTH_LONG).show()
+        RegistroFacturaActivity.SharedApp.receptorFactura = receptor
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -45,8 +54,6 @@ class adapter_receptor : RecyclerView.Adapter<adapter_receptor.ViewHolder>()  {
             nombre.text = receptor.NOMBRE1
             numero.text = receptor.NUMERO1
             correo.text= receptor.CORREOELECTRONICO1
-
-
         }
         fun ImageView.loadUrl(url: String) {
             Picasso.with(context).load(url).into(this)

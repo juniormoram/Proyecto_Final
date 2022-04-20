@@ -35,17 +35,20 @@ class RegistroFacturaActivity : AppCompatActivity() {
             lateinit var diasdelmes: MutableList<CapaDatos.FECHA>
             lateinit var emisores: MutableList<CapaDatos.PERSONA>
             lateinit var receptores: MutableList<CapaDatos.PERSONA>
+            lateinit var emisorFactura: CapaDatos.PERSONA
+            lateinit var receptorFactura: CapaDatos.PERSONA
         }
 
         override fun onCreate() {
             super.onCreate()
-//guardamos una lista de la clase fecha, que nos debe devolver la peticion
+            //guardamos una lista de la clase fecha, que nos debe devolver la peticion
             diasdelmes  = ArrayList()
             emisores  = ArrayList()
             receptores = ArrayList()
+            //Instancia persona vacia para emisor y receptor
+            emisorFactura = CapaDatos.PERSONA()
+            receptorFactura = CapaDatos.PERSONA()
         }
-
-
     }
     interface APIService {
         @POST("Calendario")
